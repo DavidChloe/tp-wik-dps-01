@@ -1,0 +1,13 @@
+{
+  "name": "ping-server",
+  "version": "1.0.0",
+  "description": "Serveur HTTP minimaliste Node.js — zéro dépendance externe",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --env-file=.env server.js",
+    "dev": "node --watch --env-file=.env server.js"
+  },
+  "engines": {
+    "node": ">=20.6.0"
+  }
+}
