@@ -25,7 +25,7 @@ const server = http.createServer((req, res) => {
   }
 
   res.writeHead(404, { 'Content-Type': 'application/json' });
-  res.end(JSON.stringify({ error: 'Not Found' }));
+  res.end(JSON.stringify({}));
 });
 
 server.listen(PORT, () => {
