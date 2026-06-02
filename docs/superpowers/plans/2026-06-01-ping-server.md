@@ -141,7 +141,7 @@ git commit -m "refactor: extract HTTP handler to app.js for testability"
 
 ```json
 {
-  "name": "ping-server",
+  "name": "TP_WIK_DPS_01",
   "version": "1.0.0",
   "description": "Serveur HTTP minimaliste Node.js — zéro dépendance externe",
   "main": "server.js",

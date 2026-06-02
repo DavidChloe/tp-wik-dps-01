@@ -10,13 +10,13 @@ Serveur HTTP minimaliste Node.js sans aucune dépendance externe.
 
 ```bash
 git clone <url-du-repo>
-cd ping-server
+cd TP_WIK_DPS_01
 cp .env.example .env
 ```
 
 ## Configuration
 
-Modifier le fichier `.env` pour ajuster le port d'écoute :
+Modifier le fichier `.env` pour ajuster le port d'écoute voulut :
 
 ```env
 PORT=3000
@@ -52,15 +52,24 @@ Vérifie que le serveur est opérationnel.
 }
 ```
 
+### `GET /stats`
+
+Donne les statistique du serveur (temps depuis l'allumage en seconde et le nombre de fois que GET /ping a été utilisé).
+
+**Réponse — 200 OK**
+```json
+{
+  "pingCount": "nombre de ping effectué",
+  "uptimeSeconds": "nombre de seconde depuis l'allumage du serveur",
+  "instanceId": "nom du serveur"
+}
+```
+
 ### Toute autre route
 
 Toute requête dont la méthode n'est pas `GET` ou dont l'URL n'est pas `/ping` retourne une erreur 404.
 
 **Réponse — 404 Not Found**
-```json
-{
-  "error": "Not Found"
-}
 ```
 
 ## Exemples
@@ -72,7 +81,7 @@ curl http://localhost:3000/ping
 
 # Route inconnue
 curl http://localhost:3000/autre
-# {"error":"Not Found"}
+# {}
 
 # Mauvaise méthode
 curl -X POST http://localhost:3000/ping
