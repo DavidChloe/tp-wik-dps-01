@@ -1,6 +1,6 @@
 {
-  "name": "TP_WIK_DPS_01",
-  "version": "1.0.0",
+  "name": "TP_WIK_DPS_02",
+  "version": "1.2.0",
   "description": "Serveur HTTP minimaliste Node.js pour TP WIK DPS 01",
   "main": "server.js",
   "scripts": {

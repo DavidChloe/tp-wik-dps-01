@@ -10,11 +10,10 @@ const server = http.createServer((req, res) => {
   if (req.method === 'GET' && req.url === '/ping') {
     pingCount++;
     res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ status: 'ok', message: 'pong' }));
+    res.end(JSON.stringify({ status: 'ok'}));
     return;
   }
-
-  if (req.method === 'GET' && req.url === '/stats') {
+  else if (req.method === 'GET' && req.url === '/stats') {
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({
       pingCount,
@@ -23,9 +22,10 @@ const server = http.createServer((req, res) => {
     }));
     return;
   }
-
-  res.writeHead(404, { 'Content-Type': 'application/json' });
-  res.end(JSON.stringify({}));
+  else {
+    res.writeHead(404, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({}));
+  }
 });
 
 server.listen(PORT, () => {

@@ -1,0 +1,15 @@
+FROM node:20.6-alpine AS builder
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci
+COPY server.js ./
+FROM node:20.6-alpine AS production
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+WORKDIR /app
+COPY --from=builder /app/package.json ./
+COPY --from=builder /app/package-lock.json ./
+COPY --from=builder /app/server.js ./
+RUN npm ci --omit=dev
+USER appuser
+EXPOSE 3000
+CMD ["node", "server.js"]
