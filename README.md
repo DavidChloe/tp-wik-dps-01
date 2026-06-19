@@ -64,6 +64,19 @@ docker run -p 3000:3000 -e PORT=3000 -e INSTANCE_ID=server-1 ping-server:multi
 docker scout cves ping-server:single
 ```
 
+Le rapport complet est disponible dans [`scout-report.txt`](./scout-report.txt).
+
+Résumé du dernier scan (image `ping-server:single` — `node:20.6-alpine`) :
+
+| Sévérité | Nombre |
+|----------|--------|
+| CRITICAL | 1      |
+| HIGH     | 19     |
+| MEDIUM   | 17     |
+| LOW      | 5      |
+
+37 vulnérabilités détectées dans 14 packages (principalement `openssl`, `tar`, `minimatch` issus de la base Alpine 3.18 et des outils npm intégrés à Node.js).
+
 ## Endpoints
 
 ### `GET /ping`
