@@ -1,4 +1,5 @@
 const http = require('http');
+const os = require('os');
 
 const PORT = process.env.PORT || 3000;
 const INSTANCE_ID = process.env.INSTANCE_ID || 'default';
@@ -9,6 +10,7 @@ const startTime = Date.now();
 const server = http.createServer((req, res) => {
   if (req.method === 'GET' && req.url === '/ping') {
     pingCount++;
+    console.log(`[ping] hostname=${os.hostname()}`);
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ status: 'ok'}));
     return;
@@ -19,6 +21,7 @@ const server = http.createServer((req, res) => {
       pingCount,
       uptimeSeconds: Math.floor((Date.now() - startTime) / 1000),
       instanceId: INSTANCE_ID,
+      hostname: os.hostname(),
     }));
     return;
   }
